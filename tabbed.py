@@ -119,6 +119,10 @@ class Tabbed(_SimpleLayoutBase):
     """
 
     defaults = [
+        ("border_width", 0, "Border width"),
+        ("border_focus", None, "Border color for focused window"),
+        ("border_normal", None, "Border color for unfocused window"),
+        ("margin", 0, "Margin"),
         ("bg_color", "000000", "Background color of tab bar"),
         ("active_fg", "ffffff", "Foreground color of active tab"),
         ("active_bg", "000080", "Background color of active tab"),
@@ -160,10 +164,11 @@ class Tabbed(_SimpleLayoutBase):
             client.place(
                 screen_rect.x,
                 screen_rect.y,
-                screen_rect.width,
-                screen_rect.height,
-                0,
-                None,
+                screen_rect.width - self.border_width * 2,
+                screen_rect.height - self.border_width * 2,
+                self.border_width,
+                self.border_focus if client.has_focus else self.border_normal,
+                margin=self.margin
             )
             client.unhide()
         else:
