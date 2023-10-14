@@ -144,10 +144,10 @@ class Tabbed(_SimpleLayoutBase):
         self._panel = None
         self._tabs = {}
 
-    def add(self, client):
+    def add_client(self, client):
         tab = Tab(client)
         self._tabs[client] = tab
-        return super().add(client, 1)
+        return super().add_client(client, 1)
 
     def clone(self, group):
         c = Layout.clone(self, group)
