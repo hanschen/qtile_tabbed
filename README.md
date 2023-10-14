@@ -50,6 +50,10 @@ Options
 
 | Option            | Description                                       | Default   |
 | ----------------- | ------------------------------------------------- | --------- |
+| border_width      | Border width                                      | 0         |
+| border_focus      | Border color for focused window                   | None      |
+| border_normal     | Border color for unfocused window                 | None      |
+| margin            | Margin around maximized window                    | 0         |
 | bg_color          | Background color of tab bar                       | "000000"  |
 | active_fg         | Foreground color of active tab                    | "ffffff"  |
 | active_bg         | Background color of active tab                    | "000080"  |
