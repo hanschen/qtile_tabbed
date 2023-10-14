@@ -6,6 +6,7 @@ Created by Hans Chen (contact@hanschen.org).
 """
 
 from libqtile import hook
+from libqtile.command.base import expose_command
 from libqtile.layout.base import _ClientList, _SimpleLayoutBase
 from libqtile.layout.base import Layout
 
@@ -168,25 +169,26 @@ class Tabbed(_SimpleLayoutBase):
         else:
             client.hide()
 
-    cmd_previous = _SimpleLayoutBase.previous
-    cmd_next = _SimpleLayoutBase.next
+    @expose_command("previous")
+    def up(self):
+        _SimpleLayoutBase.previous(self)
 
-    cmd_up = cmd_previous
-    cmd_down = cmd_next
+    @expose_command("next")
+    def down(self):
+        _SimpleLayoutBase.next(self)
 
-    cmd_left = cmd_previous
-    cmd_right = cmd_next
+    left = up
+    right = down
 
-    def cmd_shuffle_down(self):
+    @expose_command("shuffle_right")
+    def shuffle_down(self):
         self.clients.shuffle_down()
         self.draw_panel()
 
-    def cmd_shuffle_up(self):
+    @expose_command("shuffle_left")
+    def shuffle_up(self):
         self.clients.shuffle_up()
         self.draw_panel()
-
-    cmd_shuffle_left = cmd_shuffle_up
-    cmd_shuffle_right = cmd_shuffle_down
 
     def draw_panel(self, *args):
         del args
@@ -231,9 +233,9 @@ class Tabbed(_SimpleLayoutBase):
 
     def process_button_click(self, x, y, button):
         if button == 4:
-            self.cmd_up()
+            self.up()
         elif button == 5:
-            self.cmd_down()
+            self.down()
         else:
             for client in self.clients:
                 tab = self._tabs[client].button_press(x, y)
