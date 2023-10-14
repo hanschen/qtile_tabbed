@@ -10,7 +10,8 @@ I developed this for my own needs and currently do not have time to make it
 "complete". Feel free to let me know (for example, by [opening an Issue]) and
 fork the repository if you want to develop it further.
 
-**Note:** Currently does not work for Qtile >= 0.23.0.
+**Note:** The code has been updated for Qtile >= 0.23.0.
+For older Qtile releases, try the `v0.22` branch.
 
 [opening an Issue]: https://github.com/hanschen/qtile_tabbed/issues
 
