@@ -1,7 +1,7 @@
 QTILE_TABBED
 ============
 
-Proof-of-concept Tabbed layout in Qtile.
+Proof-of-concept Tabbed layout in Qtile (see [Issue #491](https://github.com/qtile/qtile/issues/491)).
 
 The layout maximizes windows without hiding bars and shows tabs for all windows
 in the layout.
